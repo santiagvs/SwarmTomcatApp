@@ -23,7 +23,7 @@ jobs:
 
       - name: Build Project
         run: |
-          ./mvnw clean package -DskipTests
+          mvn clean package -DskipTests
 
       - name: Checkout Repository
         uses: actions/checkout@v4
