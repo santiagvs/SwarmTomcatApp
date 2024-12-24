@@ -6,8 +6,6 @@ services:
       replicas: 1
     ports:
       - "8080:8080"
-    volumes:
-      - ./target/formulario.war:/usr/local/tomcat/webapps/formulario.war
     depends_on:
       - mysql
 
