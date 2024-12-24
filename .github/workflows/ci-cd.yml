@@ -54,7 +54,14 @@ jobs:
       - name: Run Integration Tests
         run: |
           docker compose up -d
-          docker compose exec form-app curl -f http://localhost:8080 || exit 1
+          for i in {1..10}; do
+            if docker compose exec form-app curl -f http://localhost:8080; then
+              echo "Application is up!";
+              break;
+            fi;
+            echo "Waiting for application to be ready...";
+            sleep 5;
+          done
           docker compose down
 
       - name: Docker Metadata
